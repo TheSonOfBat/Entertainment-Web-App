@@ -1,3 +1,4 @@
+![tech-react-sass](https://github.com/TheSonOfBat/Entertainment-Web-App/assets/62327154/27d84c8d-ce07-4340-bbb3-2d58fc3d760b)
 # Entertainment Web App
 
 ## Deployment
