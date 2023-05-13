@@ -1,0 +1,65 @@
+$accent-color: #FC4747;
+$background-color: #10141E;
+$icon-color: #5A698F;
+$foreground-color: #161D2F;
+$text-color: white;
+$smallText-color: #C3C4C7;
+
+$h1-size: 2rem;
+$h2-size: 1.5rem;
+$h3-size: $h2-size;
+$h4-size: 1.125rem;
+$paragraph-size: 1rem;
+$smallText-size: 0.8125rem;
+
+$heavy-weight: 600;
+$medium-weight: 400;
+$light--weight: 200;
+
+
+/*Document Styling*/
+
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    color: $text-color;
+}
+
+/*Universal (Sass) Styling*/
+
+h1{
+    font-size: $h1-size;
+    font-weight: $light--weight;
+}
+
+h2{
+    font-size: $h2-size;
+    font-weight: $light--weight;
+}
+
+h3{
+    font-size: $h3-size;
+    font-weight: $medium-weight;
+}
+
+h4{
+    font-size: $h4-size;
+    font-weight: $medium-weight;
+}
+
+p{
+    font-size: $paragraph-size;
+    font-weight: $light--weight;
+}
+
+.smallText{
+    font-size: $smallText-size;
+    font-weight: $light--weight;
+    color: $smallText-color;
+}
+
+/*Document Styling*/
+html{
+    background-color: $background-color;
+}
