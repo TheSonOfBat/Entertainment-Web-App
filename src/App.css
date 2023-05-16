@@ -75,6 +75,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 35px;
 }
 
 .nav--secondaryIcons > a {
@@ -82,9 +83,17 @@ nav {
   height: 20px;
 }
 
-.nav--secondaryIcons img {
+.nav--icon {
   aspect-ratio: 1/1;
   height: 100%;
+}
+
+.nav--iconHighlighted {
+  filter: brightness(100);
+}
+
+.nav--secondaryIcons img:hover {
+  filter: invert(36%) sepia(64%) saturate(3076%) hue-rotate(337deg) brightness(100%) contrast(100%);
 }
 
 #nav--avatar {
