@@ -5,13 +5,14 @@ export default function Card(props){
     console.log(image);
     return(
         <div className={`card ${props.isTrending?"trending":""}`} style={props.isTrending?{backgroundImage: `url(${image})`}:{}}>
+            {!props.isTrending&&<img src={image}></img>}
             <div className="card--details">
                 <div className="card--specs">
-                    <h3>{props.year}</h3>
-                    <h3>{props.category}</h3>
-                    <h3>{props.rating}</h3>
+                    <p>{props.year}</p>
+                    <p>{props.category}</p>
+                    <p>{props.rating}</p>
                 </div>
-                {!props.isTrending&&<img src={image}></img>}
+                <h2>{props.title}</h2>
             </div>
         </div>
     )
