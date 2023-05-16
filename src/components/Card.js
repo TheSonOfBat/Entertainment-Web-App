@@ -1,3 +1,5 @@
+import tvIcon from "../assets/icon-category-tv.svg";
+import movieIcon from "../assets/icon-category-movie.svg";
 
 export default function Card(props){
     console.log(props.title);
@@ -8,8 +10,11 @@ export default function Card(props){
             {!props.isTrending&&<img src={image}></img>}
             <div className="card--details">
                 <div className="card--specs">
-                    <p>{props.year}</p>
-                    <p>{props.category}</p>
+                    <p>{props.year}</p><span></span>
+                    <div style={{display: "flex", alignItems: "center"}}>
+                        <img src={props.category==="Movie"?movieIcon:tvIcon} style={{marginRight: "5px"}}></img>
+                        <p>{props.category}</p>
+                    </div><span></span>
                     <p>{props.rating}</p>
                 </div>
                 <h2>{props.title}</h2>

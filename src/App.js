@@ -34,7 +34,8 @@ export default function App(){
       updateSearchValue(e.target.value)
     }
 
-    return(<>
+    return(
+    <>
         <div id="LHS">
             <Nav/>
         </div>
