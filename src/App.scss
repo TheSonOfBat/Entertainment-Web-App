@@ -83,6 +83,11 @@ html, body, #root{
     position: sticky;
 }
 
+#RHS{
+    width: 100%;
+    padding-left: 37px;
+}
+
 nav{
     background-color: $semi-dark-blue;
     height: 100%;
@@ -133,11 +138,48 @@ nav{
     height: 40px;
 }
 
+/*Search Bar*/
+
+.searchbar{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1240px;
+    font-size: $h2-size;
+    margin-bottom: 20px;
+}
+
+#searchbar--input{
+    all: unset;
+    width: 100%;
+    caret-color: $red;
+    border: 1px solid transparent;
+    padding: 14px 0px 14px 0px;
+}
+
+#searchbar--input:focus{
+    border-bottom: 1px solid $greyish-blue;
+}
+
+#searchbar--icon{
+    height: 27px;
+    aspect-ratio: 1/1;
+    margin-right: 15px;
+}
+
 @media only screen and (max-width: $tablet-resolution){
+    #root{
+        flex-direction: column;
+    }
     /*Nav*/
     #LHS{
         width: 100%;
         padding: 25px;
+        height: min-content;
+    }
+
+    #RHS{
+        padding: 0px 25px 0px 25px;
     }
 
     nav{

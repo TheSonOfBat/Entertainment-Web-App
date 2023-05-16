@@ -2,7 +2,7 @@
 export default function Home(){
     return(
         <main>
-            
+            <h1>Trending</h1>
         </main>
     )
 }
