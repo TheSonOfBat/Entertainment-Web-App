@@ -50,6 +50,7 @@ html, body, #root {
 #root {
   padding: 32px;
   display: flex;
+  overflow-x: hidden;
 }
 
 /*Nav*/
@@ -141,19 +142,58 @@ nav {
   margin-right: 15px;
 }
 
+/*Card*/
+.trending {
+  min-width: 550px;
+  min-height: 270px;
+  background-size: cover;
+  border-radius: 8px;
+}
+
+/*Home*/
+main {
+  max-width: 100%;
+}
+
+.trending--section {
+  display: flex;
+  gap: 40px;
+  overflow-x: scroll;
+  padding-bottom: 10px;
+  margin-top: 25px;
+}
+
+.trending--section::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+}
+
+.trending--section::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.trending--section::-webkit-scrollbar-thumb {
+  background: #161D2F;
+  border-radius: 10px;
+}
+
+.trending--section::-webkit-scrollbar-thumb:hover {
+  background: #050608;
+}
+
 @media only screen and (max-width: 770px) {
   #root {
     flex-direction: column;
+    padding: 23px;
   }
   /*Nav*/
   #LHS {
     width: 100%;
-    padding: 25px;
     height: -moz-min-content;
     height: min-content;
   }
   #RHS {
-    padding: 0px 25px 0px 25px;
+    padding: 0px;
   }
   nav {
     width: 100%;

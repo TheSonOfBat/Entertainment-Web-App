@@ -1,10 +1,12 @@
-
+import Card from "../components/Card";
+import Data from "../data.json";
 export default function Home(){
     return(
         <main>
             <h1>Trending</h1>
+            <div className="trending--section">
+                {(Data.filter((item)=>{return item.isTrending}).map((item)=>{return <Card {...item} key={item.title}/>}))}
+            </div>
         </main>
     )
 }
-
-//More accurate way to make SVG files change color https://stackoverflow.com/questions/22252472/how-can-i-change-the-color-of-an-svg-element
