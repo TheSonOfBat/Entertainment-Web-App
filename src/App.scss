@@ -74,18 +74,18 @@ html, body, #root{
 }
 
 #root{
-    padding: 32px;
     display: flex;
+    padding: 32px 0px 0px 32px;
 }
 
 /*Nav*/
 #LHS{
     height: 100%;
-    position: sticky;
 }
 
 #RHS{
-    width: 100%;
+    flex-grow: 1;
+    width: 0px;
     padding-left: 37px;
 }
 
@@ -202,10 +202,6 @@ nav{
 }
 
 /*Home*/
-
-main{
-    max-width: 100%;
-}
 
 .trending--section{
     display: flex;

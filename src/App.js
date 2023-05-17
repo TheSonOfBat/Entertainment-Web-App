@@ -41,7 +41,14 @@ export default function App(){
         </div>
         <div id="RHS">
             <Searchbar value={searchValue} onchange={(e)=>{handleChange(e)}}/>
-            {searchValue===""&&<RouterProvider router={router}/>}
+            <RouterProvider router={router}/>
+            <RouterProvider router={router}/>
+            <RouterProvider router={router}/>
+            <RouterProvider router={router}/>
+            <RouterProvider router={router}/>
+            <RouterProvider router={router}/>
+            <RouterProvider router={router}/>
+            <RouterProvider router={router}/>
         </div>
     </>
     )
