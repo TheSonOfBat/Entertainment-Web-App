@@ -19,7 +19,7 @@ export default function Card(props){
                 </div>
                 <h2>{props.title}</h2>
             </div>
-            <div className="card--bookmarkContainer">
+            <div className="card--bookmarkContainer" onClick={props.toggle}>
                 <img src={props.isBookmarked?bookmarkFullIcon:bookmarkEmptyIcon} className="card--bookmark"></img>
             </div>
         </div>

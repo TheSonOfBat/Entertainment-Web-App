@@ -135,11 +135,12 @@ nav {
   position: relative;
   border-radius: 8px;
   margin-right: 40px;
+  width: clamp(300px, 20vw, 350px);
 }
 
 .card--image {
   height: 180px;
-  width: 300px;
+  width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 8px;
@@ -187,6 +188,7 @@ nav {
   top: 16px;
   right: 24px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .card--bookmark {
