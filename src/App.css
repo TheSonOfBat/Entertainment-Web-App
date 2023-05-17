@@ -1,9 +1,10 @@
-/*Document Styling*/
+/*Universal Styling*/
 * {
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
   color: white;
+  scroll-behavior: smooth;
 }
 
 /*Universal (Sass) Styling*/
@@ -38,14 +39,13 @@ p {
   color: #C3C4C7;
 }
 
+a {
+  display: flex;
+}
+
 /*Document Styling*/
 html {
   background-color: #10141E;
-}
-
-html, body, #root {
-  height: 100%;
-  width: 100%;
 }
 
 #root {
@@ -53,56 +53,43 @@ html, body, #root {
   padding: 32px 0px 0px 32px;
 }
 
-/*Nav*/
+/*LHS + RHS*/
 #LHS {
-  padding-bottom: 32px;
+  height: calc(100vh - 64px);
+  padding-right: 36px;
+  position: sticky;
+  top: 32px;
 }
 
 #RHS {
-  flex-grow: 1;
   width: 0px;
-  padding-left: 37px;
+  flex-grow: 1;
 }
 
+/*Nav*/
 nav {
-  top: 0px;
-  left: 0px;
   background-color: #161D2F;
   height: 100%;
-  border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px 0px 32px 0px;
-  position: relative;
-  min-height: 500px;
+  border-radius: 20px;
   width: 96px;
-}
-
-.nav--logo {
-  height: 26px;
-  width: auto;
+  padding: 35px 0px 35px 0px;
+  min-height: 500px;
 }
 
 .nav--secondaryIcons {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 35px;
-}
-
-.nav--secondaryIcons > a {
-  margin-top: 40px;
-  height: 20px;
-}
-
-.nav--icon {
-  aspect-ratio: 1/1;
-  height: 100%;
+  margin-top: 75px;
+  height: 200px;
+  justify-content: space-between;
 }
 
 .nav--iconHighlighted {
-  filter: brightness(100);
+  filter: brightness(10);
 }
 
 .nav--secondaryIcons img:hover {
@@ -110,8 +97,7 @@ nav {
 }
 
 #nav--avatar {
-  position: absolute;
-  bottom: 32px;
+  margin-top: auto;
   aspect-ratio: 1/1;
   height: 40px;
 }
@@ -147,6 +133,16 @@ nav {
 /*Card*/
 .card {
   position: relative;
+  border-radius: 8px;
+  margin-right: 40px;
+}
+
+.card--image {
+  height: 180px;
+  width: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
 }
 
 .card span {
@@ -160,11 +156,14 @@ nav {
   min-width: 550px;
   height: 270px;
   background-size: cover;
-  border-radius: 8px;
-  margin-right: 40px;
 }
 
 .card--details {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.trending > .card--details {
   position: absolute;
   bottom: 0px;
   margin: 25px;
@@ -177,14 +176,37 @@ nav {
   align-items: center;
 }
 
-/*Home*/
-
-.trending--section {
+.card--bookmarkContainer {
+  aspect-ratio: 1/1;
+  height: 32px;
+  background-color: #5C6577;
   display: flex;
-  overflow-x: scroll;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  border-radius: 50%;
+}
+
+.card--bookmark {
+  height: 14px;
+  width: auto;
+}
+
+/*Section*/
+section {
+  display: flex;
   padding-bottom: 10px;
   margin-top: 25px;
   width: 100%;
+  flex-wrap: wrap;
+}
+
+/*Home*/
+.trending--section {
+  overflow-x: scroll;
+  flex-wrap: nowrap;
 }
 
 .trending--section::-webkit-scrollbar {
@@ -203,40 +225,4 @@ nav {
 
 .trending--section::-webkit-scrollbar-thumb:hover {
   background: #050608;
-}
-
-@media only screen and (max-width: 770px) {
-  #root {
-    flex-direction: column;
-    padding: 23px;
-  }
-  /*Nav*/
-  #LHS {
-    width: 100%;
-    height: -moz-min-content;
-    height: min-content;
-  }
-  #RHS {
-    padding: 0px;
-  }
-  nav {
-    width: 100%;
-    flex-direction: row;
-    min-height: auto;
-    height: clamp(56px, 10vh, 72px);
-    justify-content: space-between;
-    padding: 25px;
-    border-radius: 10px;
-  }
-  .nav--secondaryIcons {
-    flex-direction: row;
-    margin: 0px;
-  }
-  .nav--secondaryIcons > a {
-    margin: 0px 12px 0px 12px;
-  }
-  #nav--avatar {
-    position: relative;
-    bottom: 0px;
-  }
 }/*# sourceMappingURL=App.css.map */

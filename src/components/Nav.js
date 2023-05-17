@@ -8,7 +8,7 @@ import navAvatar from "../assets/image-avatar.png"
 export default function Nav(){
     return(
         <nav>
-            <img className="nav--logo" src={navLogo}></img>
+            <a href="#"><img className="nav--logo" src={navLogo}></img></a>
             <div className="nav--secondaryIcons">
                 <a href="/home"><img className={`nav--icon ${window.location.pathname==="/home"?"nav--iconHighlighted":""}`} src={navHome}></img></a>
                 <a href="/movie"><img className={`nav--icon ${window.location.pathname==="/movie"?"nav--iconHighlighted":""}`} src={navMovie}></img></a>
