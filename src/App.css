@@ -59,6 +59,7 @@ html {
   padding-right: 36px;
   position: sticky;
   top: 32px;
+  z-index: 4;
 }
 
 #RHS {
@@ -136,7 +137,7 @@ nav {
   border-radius: 8px;
   margin-right: 40px;
   width: clamp(300px, 20vw, 350px);
-  transition: 2s ease;
+  transition: opacity 2s ease;
 }
 
 .card:hover .card--play {
@@ -280,4 +281,46 @@ section {
 
 .trending--section::-webkit-scrollbar-thumb:hover {
   background: #050608;
+}
+
+@media only screen and (max-width: 770px) {
+  #root {
+    flex-direction: column;
+    padding: 23px;
+  }
+  /*Nav*/
+  #LHS {
+    width: 100%;
+    height: -moz-min-content;
+    height: min-content;
+    padding-right: 0px;
+    padding: 0px;
+    top: 0px;
+  }
+  #RHS {
+    padding: 0px;
+    width: 100%;
+  }
+  nav {
+    width: 100%;
+    flex-direction: row;
+    min-height: auto;
+    height: clamp(56px, 10vh, 72px);
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    border-radius: 10px;
+  }
+  .nav--secondaryIcons {
+    flex-direction: row;
+    margin: 0px;
+  }
+  .nav--secondaryIcons > a {
+    margin: 0px 12px 0px 12px;
+  }
+  #nav--avatar {
+    position: relative;
+    bottom: 0px;
+    margin-top: 0px;
+  }
 }/*# sourceMappingURL=App.css.map */
