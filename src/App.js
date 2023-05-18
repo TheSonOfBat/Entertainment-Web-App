@@ -6,6 +6,7 @@ import React from 'react';
 import Home from './routes/Home';
 import Data from "./data.json";
 import Bookmark from './routes/Bookmark';
+import Card from './components/Card';
 
 export default function App(){
   let intialData = (localStorage.getItem("savedData"))?JSON.parse(localStorage.getItem("savedData")):Data;
@@ -63,6 +64,16 @@ export default function App(){
             <RouterProvider router={router}/>
             ]
             
+          }
+          {
+            searchValue!==""&&
+            data.filter((item)=>{
+              console.log(item);
+              return item.title.toLowerCase().startsWith(searchValue.toLowerCase())
+            }).map((item)=>{
+              console.log(item);
+              return <Card {...item} key={item.title+"Search"} toggle={()=>{toggleBookmark(item.title)}}/>
+            })
           }
         </div>
     </>

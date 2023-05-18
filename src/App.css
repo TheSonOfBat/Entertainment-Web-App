@@ -172,9 +172,8 @@ nav {
 
 .card--specs {
   display: flex;
-  width: 150px;
-  justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
 .card--bookmarkContainer {
