@@ -7,6 +7,8 @@ import Home from './routes/Home';
 import Data from "./data.json";
 import Bookmark from './routes/Bookmark';
 import Card from './components/Card';
+import TV from './routes/TV';
+import Movie from './routes/Movie';
 
 export default function App(){
   let intialData = (localStorage.getItem("savedData"))?JSON.parse(localStorage.getItem("savedData")):Data;
@@ -15,22 +17,18 @@ export default function App(){
       {
         path: "/home",
         element: <Home data={data} toggleBookmark={(target)=>toggleBookmark(target)}/>,
-        searchRestriction: null
       },
       {
         path: "/movie",
-        element: <p>Movies</p>,
-        searchRestriction: "Movies"
+        element: <Movie data={data} toggleBookmark={(target)=>toggleBookmark(target)}/>,
       },
       {
         path: "/tv",
-        element: <p>TV</p>,
-        searchRestriction: "TV Series"
+        element: <TV data={data} toggleBookmark={(target)=>toggleBookmark(target)}/>,
       },
       {
         path: "/bookmark",
         element: <Bookmark data={data} toggleBookmark={(target)=>toggleBookmark(target)}/>,
-        searchRestriction: "Bookmarks"
       },
     ]);
     const [searchValue, updateSearchValue] = React.useState("");
@@ -67,15 +65,16 @@ export default function App(){
           }
           {
             searchValue!==""&&
+            <>
+            <h1>Search Results</h1>
             <section>
               {data.filter((item)=>{
-                console.log(item);
-                return item.title.toLowerCase().startsWith(searchValue.toLowerCase())
+                return item.title.toLowerCase().startsWith(searchValue.toLowerCase()) && (window.location.pathname==="/movie"?item.category==="Movie":window.location.pathname==="/tv"?item.category==="TV Series":window.location.pathname==="/bookmark"?item.isBookmarked:true);
               }).map((item)=>{
-                console.log(item);
                 return <Card {...item} key={item.title+"Search"} toggle={()=>{toggleBookmark(item.title)}}/>
               })}
             </section>
+            </>
           }
         </div>
     </>
