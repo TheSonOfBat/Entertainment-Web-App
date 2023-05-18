@@ -4,12 +4,16 @@ import Nav from './components/Nav';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import React from 'react';
 import Home from './routes/Home';
+import Data from "./data.json";
+import Bookmark from './routes/Bookmark';
 
 export default function App(){
+  let intialData = (localStorage.getItem("savedData"))?JSON.parse(localStorage.getItem("savedData")):Data;
+  let [data, updateData] = React.useState(intialData);
   const router = createBrowserRouter([
       {
         path: "/home",
-        element: <Home/>,
+        element: <Home data={data} toggleBookmark={(target)=>toggleBookmark(target)}/>,
         searchRestriction: null
       },
       {
@@ -24,7 +28,7 @@ export default function App(){
       },
       {
         path: "/bookmark",
-        element: <p>Bookmark</p>,
+        element: <Bookmark data={data} toggleBookmark={(target)=>toggleBookmark(target)}/>,
         searchRestriction: "Bookmarks"
       },
     ]);
@@ -33,6 +37,19 @@ export default function App(){
     function handleChange(e){
       updateSearchValue(e.target.value)
     }
+    function toggleBookmark(word){
+      updateData((prev)=>{
+          let newArr = JSON.parse(JSON.stringify(prev));//Shallow Copy === Spread Operator VS Stringify into Parse === Deep Copy (What we need)
+          newArr[newArr.findIndex(item=> item.title === word)].isBookmarked = !newArr[newArr.findIndex(item=> item.title === word)].isBookmarked;
+          return [...newArr];
+      })
+      
+    }
+
+    React.useEffect(()=>{
+      localStorage.setItem("savedData", JSON.stringify(data));
+    },[data]);
+
     return(
     <>
         <div id="LHS">

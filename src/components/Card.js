@@ -5,9 +5,10 @@ import bookmarkFullIcon from "../assets/icon-bookmark-full.svg";
 
 export default function Card(props){
     let image = require(`../assets/thumbnails/${(props.title).replace(/\s+/g, '-').replace("II", '2').replace("’","").replace(":","").toLowerCase()}/regular/large.jpg`);
+    let displayDefault = (props.isTrending&&window.location.pathname==="/home");
     return(
-        <div className={`card ${props.isTrending?"trending":""}`} style={props.isTrending?{backgroundImage: `url(${image})`}:{}}>
-            {!props.isTrending&&<img src={image} className="card--image"></img>}
+        <div className={`card ${displayDefault?"trending":""}`} style={displayDefault?{backgroundImage: `url(${image})`}:{}}>
+            {!displayDefault&&<img src={image} className="card--image"></img>}
             <div className="card--details">
                 <div className="card--specs">
                     <p>{props.year}</p><span></span>
