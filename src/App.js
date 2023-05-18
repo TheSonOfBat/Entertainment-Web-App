@@ -67,13 +67,15 @@ export default function App(){
           }
           {
             searchValue!==""&&
-            data.filter((item)=>{
-              console.log(item);
-              return item.title.toLowerCase().startsWith(searchValue.toLowerCase())
-            }).map((item)=>{
-              console.log(item);
-              return <Card {...item} key={item.title+"Search"} toggle={()=>{toggleBookmark(item.title)}}/>
-            })
+            <section>
+              {data.filter((item)=>{
+                console.log(item);
+                return item.title.toLowerCase().startsWith(searchValue.toLowerCase())
+              }).map((item)=>{
+                console.log(item);
+                return <Card {...item} key={item.title+"Search"} toggle={()=>{toggleBookmark(item.title)}}/>
+              })}
+            </section>
           }
         </div>
     </>

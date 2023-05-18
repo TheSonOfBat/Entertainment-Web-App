@@ -2,13 +2,19 @@ import tvIcon from "../assets/icon-category-tv.svg";
 import movieIcon from "../assets/icon-category-movie.svg";
 import bookmarkEmptyIcon from "../assets/icon-bookmark-empty.svg";
 import bookmarkFullIcon from "../assets/icon-bookmark-full.svg";
+import playButton from "../assets/icon-play.svg"
 
 export default function Card(props){
     let image = require(`../assets/thumbnails/${(props.title).replace(/\s+/g, '-').replace("II", '2').replace("’","").replace(":","").toLowerCase()}/regular/large.jpg`);
-    let displayDefault = (props.isTrending&&window.location.pathname==="/home");
     return(
-        <div className={`card ${displayDefault?"trending":""}`} style={displayDefault?{backgroundImage: `url(${image})`}:{}}>
-            {!displayDefault&&<img src={image} className="card--image"></img>}
+        <div className={`card ${props.trendingDisplay?"trending":""}`} style={props.trendingDisplay?{backgroundImage: `url(${image})`}:{}}>
+            {!props.trendingDisplay&&<div className="card--image" style={{backgroundImage: `url(${image})`}}>
+            <div className="card--play">
+                <div className="card--playBackground"></div>
+                <img src={playButton} className="card--playbutton"></img>
+                <div className="card--playText">Play</div>
+            </div>
+            </div>}
             <div className="card--details">
                 <div className="card--specs">
                     <p>{props.year}</p><span></span>
@@ -23,6 +29,14 @@ export default function Card(props){
             <div className="card--bookmarkContainer" onClick={props.toggle}>
                 <img src={props.isBookmarked?bookmarkFullIcon:bookmarkEmptyIcon} className="card--bookmark"></img>
             </div>
+            {props.trendingDisplay&&
+                <div className="card--play">
+                    <div className="card--playBackground"></div>
+                    <img src={playButton} className="card--playbutton"></img>
+                    <div className="card--playText">Play</div>
+                </div>
+            }
+            
         </div>
     )
 }
