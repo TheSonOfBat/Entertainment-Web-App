@@ -3,7 +3,7 @@ export default function Home(props){
     return(
         <main>
             <h1>Trending</h1>
-            <section className="trending--section">
+            <section id="trending--section">
                 {(props.data.filter((item)=>{return item.isTrending}).map((item, index)=>{return <Card {...item} key={item.title+"Trending"} toggle={()=>{props.toggleBookmark(item.title)}} trendingDisplay={true} animationDelay={0+(0.075*(index))}/>}))}
             </section>
             <h1>Recommended For You</h1>
