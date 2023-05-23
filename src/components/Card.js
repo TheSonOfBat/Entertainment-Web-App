@@ -9,7 +9,7 @@ export default function Card(props){
     return(
         <div className={`card ${props.trendingDisplay?"trending":""}`} style={props.trendingDisplay?{backgroundImage: `url(${image})`, animation: "none", opacity: "1"}:{animationDelay: `${props.animationDelay}s`, animationFillMode: "forwards"}}>
             {!props.trendingDisplay&&<div className="card--image" style={{backgroundImage: `url(${image})`}}>
-            <div className="card--play">
+            <div className="card--play" onClick={props.alertFunction}>
                 <div className="card--playBackground"></div>
                 <img src={playButton} className="card--playbutton"></img>
                 <div className="card--playText">Play</div>
@@ -30,7 +30,7 @@ export default function Card(props){
                 <img src={props.isBookmarked?bookmarkFullIcon:bookmarkEmptyIcon} className="card--bookmark"></img>
             </div>
             {props.trendingDisplay&&
-                <div className="card--play">
+                <div className="card--play" onClick={props.alertFunction}>
                     <div className="card--playBackground"></div>
                     <img src={playButton} className="card--playbutton"></img>
                     <div className="card--playText">Play</div>

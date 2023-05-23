@@ -10,26 +10,28 @@ import Card from './components/Card';
 import TV from './routes/TV';
 import Movie from './routes/Movie';
 import ErrorBoundary from './routes/ErrorBoundary';
+import Alert from './components/Alert';
 
 export default function App(){
   let intialData = (localStorage.getItem("savedData"))?JSON.parse(localStorage.getItem("savedData")):Data;
   let [data, updateData] = React.useState(intialData);
+  let [alertOn, updateAlertOn] = React.useState(false);
   const router = createBrowserRouter([
       {
         path: "/",
-        element: <Home data={data} toggleBookmark={(target)=>toggleBookmark(target)}/>,
+        element: <Home data={data} toggleBookmark={(target)=>toggleBookmark(target)} alertFunction={()=>{scopeAlert(true)}}/>,
       },
       {
         path: "/movie",
-        element: <Movie data={data} toggleBookmark={(target)=>toggleBookmark(target)}/>,
+        element: <Movie data={data} toggleBookmark={(target)=>toggleBookmark(target)} alertFunction={()=>{scopeAlert(true)}}/>,
       },
       {
         path: "/tv",
-        element: <TV data={data} toggleBookmark={(target)=>toggleBookmark(target)}/>,
+        element: <TV data={data} toggleBookmark={(target)=>toggleBookmark(target)} alertFunction={()=>{scopeAlert(true)}}/>,
       },
       {
         path: "/bookmark",
-        element: <Bookmark data={data} toggleBookmark={(target)=>toggleBookmark(target)}/>,
+        element: <Bookmark data={data} toggleBookmark={(target)=>toggleBookmark(target)} alertFunction={()=>{scopeAlert(true)}}/>,
       },
       {
         path: "*",
@@ -48,6 +50,10 @@ export default function App(){
           return [...newArr];
       }) 
     }
+    function scopeAlert(input){
+      console.log(input);
+      updateAlertOn(input);
+    }
 
     React.useEffect(()=>{
       localStorage.setItem("savedData", JSON.stringify(data));
@@ -55,8 +61,9 @@ export default function App(){
 
     return(
     <>
+        {alertOn&&<Alert isOn={alertOn} toggle={()=>{scopeAlert(false)}}></Alert>}
         {["/","/movie","/tv", "/bookmark"].includes(router.state.location.pathname) &&<div id="LHS">
-            <Nav/>
+            <Nav alertFunction={()=>{scopeAlert(true)}}/>
         </div>}
         <div id="RHS">
             {["/","/movie","/tv", "/bookmark"].includes(router.state.location.pathname) &&<Searchbar value={searchValue} onchange={(e)=>{handleChange(e)}}/>}

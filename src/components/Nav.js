@@ -5,7 +5,7 @@ import navTv from "../assets/icon-nav-tv-series.svg"
 import navBookmark from "../assets/icon-nav-bookmark.svg"
 import navAvatar from "../assets/image-avatar.png"
 
-export default function Nav(){
+export default function Nav(props){
     return(
         <nav>
             <a href="#"><img className="nav--logo" src={navLogo}></img></a>
@@ -15,7 +15,7 @@ export default function Nav(){
                 <a href="/tv"><img className={`nav--icon ${window.location.pathname==="/tv"?"nav--iconHighlighted":""}`} src={navTv}></img></a>
                 <a href="/bookmark"><img className={`nav--icon ${window.location.pathname==="/bookmark"?"nav--iconHighlighted":""}`} src={navBookmark}></img></a>
             </div>
-            <img src={navAvatar} id="nav--avatar"></img>
+            <img src={navAvatar} id="nav--avatar" onClick={props.alertFunction} style={{cursor: "pointer"}}></img>
         </nav>
     )
 }
