@@ -4,7 +4,7 @@ export default function Movie(props){
         <main>
             <h1>Movies</h1>
             <section>
-                {(props.data.filter((item)=>{return item.category === "Movie"}).map((item)=>{return <Card {...item} key={item.title+"Bookmarked"} toggle={()=>{props.toggleBookmark(item.title)}}/>}))}
+                {(props.data.filter((item)=>{return item.category === "Movie"}).map((item, index)=>{return <Card {...item} key={item.title+"Bookmarked"} toggle={()=>{props.toggleBookmark(item.title)}} animationDelay={0+(0.075*(index))}/>}))}
             </section>
         </main>
     )

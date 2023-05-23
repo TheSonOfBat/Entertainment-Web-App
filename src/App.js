@@ -70,8 +70,8 @@ export default function App(){
             <section>
               {data.filter((item)=>{
                 return item.title.toLowerCase().startsWith(searchValue.toLowerCase()) && (window.location.pathname==="/movie"?item.category==="Movie":window.location.pathname==="/tv"?item.category==="TV Series":window.location.pathname==="/bookmark"?item.isBookmarked:true);
-              }).map((item)=>{
-                return <Card {...item} key={item.title+"Search"} toggle={()=>{toggleBookmark(item.title)}}/>
+              }).map((item, index)=>{
+                return <Card {...item} key={item.title+"Search"} toggle={()=>{toggleBookmark(item.title)}} animationDelay={0+(0.075*(index))}/>
               })}
             </section>
             </>
