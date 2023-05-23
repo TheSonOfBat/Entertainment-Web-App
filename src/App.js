@@ -9,13 +9,14 @@ import Bookmark from './routes/Bookmark';
 import Card from './components/Card';
 import TV from './routes/TV';
 import Movie from './routes/Movie';
+import ErrorBoundary from './routes/ErrorBoundary';
 
 export default function App(){
   let intialData = (localStorage.getItem("savedData"))?JSON.parse(localStorage.getItem("savedData")):Data;
   let [data, updateData] = React.useState(intialData);
   const router = createBrowserRouter([
       {
-        path: "/home",
+        path: "/",
         element: <Home data={data} toggleBookmark={(target)=>toggleBookmark(target)}/>,
       },
       {
@@ -30,6 +31,10 @@ export default function App(){
         path: "/bookmark",
         element: <Bookmark data={data} toggleBookmark={(target)=>toggleBookmark(target)}/>,
       },
+      {
+        path: "*",
+        element: <ErrorBoundary/>,
+      },
     ]);
     const [searchValue, updateSearchValue] = React.useState("");
     
@@ -41,8 +46,7 @@ export default function App(){
           let newArr = JSON.parse(JSON.stringify(prev));//Shallow Copy === Spread Operator VS Stringify into Parse === Deep Copy (What we need)
           newArr[newArr.findIndex(item=> item.title === word)].isBookmarked = !newArr[newArr.findIndex(item=> item.title === word)].isBookmarked;
           return [...newArr];
-      })
-      
+      }) 
     }
 
     React.useEffect(()=>{
@@ -51,15 +55,15 @@ export default function App(){
 
     return(
     <>
-        <div id="LHS">
+        {["/","/movie","/tv", "/bookmark"].includes(router.state.location.pathname) &&<div id="LHS">
             <Nav/>
-        </div>
+        </div>}
         <div id="RHS">
-            <Searchbar value={searchValue} onchange={(e)=>{handleChange(e)}}/>
+            {["/","/movie","/tv", "/bookmark"].includes(router.state.location.pathname) &&<Searchbar value={searchValue} onchange={(e)=>{handleChange(e)}}/>}
             {
               searchValue===""&&
             [
-            <RouterProvider router={router}/>
+            <RouterProvider router={router} key={"router"}/>
             ]
             
           }
@@ -71,6 +75,7 @@ export default function App(){
               {data.filter((item)=>{
                 return item.title.toLowerCase().startsWith(searchValue.toLowerCase()) && (window.location.pathname==="/movie"?item.category==="Movie":window.location.pathname==="/tv"?item.category==="TV Series":window.location.pathname==="/bookmark"?item.isBookmarked:true);
               }).map((item, index)=>{
+                console.log(item.title+"Search");
                 return <Card {...item} key={item.title+"Search"} toggle={()=>{toggleBookmark(item.title)}} animationDelay={0+(0.075*(index))}/>
               })}
             </section>
@@ -80,5 +85,3 @@ export default function App(){
     </>
     )
 }
-
-//More accurate way to make SVG files change color https://stackoverflow.com/questions/22252472/how-can-i-change-the-color-of-an-svg-element
